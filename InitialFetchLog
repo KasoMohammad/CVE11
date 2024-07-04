@@ -1,0 +1,10 @@
+const mongoose = require('mongoose');
+
+const initialFetchLogSchema = new mongoose.Schema({
+  fetched: {
+    type: Boolean,
+    default: false,
+  },
+});
+
+module.exports = mongoose.model('InitialFetchLog', initialFetchLogSchema);

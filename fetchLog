@@ -1,0 +1,9 @@
+const mongoose = require('mongoose');
+
+const fetchLogSchema = new mongoose.Schema({
+  lastFetchedDate: {
+    type: Date,
+  },
+});
+
+module.exports = mongoose.model('FetchLog', fetchLogSchema);

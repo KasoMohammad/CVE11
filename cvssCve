@@ -1,0 +1,16 @@
+const mongoose = require('mongoose');
+
+const cvssCveSchema = new mongoose.Schema({
+  id: String,
+  sourceIdentifier: String,
+  published: Date,
+  lastModified: Date,
+  vulnStatus: String,
+  descriptions: Array,
+  metrics: Object,
+  weaknesses: Array,
+  configurations: Array,
+  references: Array,
+});
+
+module.exports = mongoose.model('CvssCVE', cvssCveSchema);

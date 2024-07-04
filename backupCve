@@ -1,0 +1,75 @@
+const mongoose = require('mongoose');
+
+const backupCveSchema = new mongoose.Schema({
+  id: String,
+  sourceIdentifier: String,
+  published: Date,
+  lastModified: Date,
+  vulnStatus: String,
+  descriptions: [
+    {
+      lang: String,
+      value: String
+    }
+  ],
+  metrics: {
+    cvssV3: {
+      baseScore: Number,
+      baseSeverity: String,
+      attackVector: String,
+      attackComplexity: String,
+      privilegesRequired: String,
+      userInteraction: String,
+      scope: String,
+      confidentialityImpact: String,
+      integrityImpact: String,
+      availabilityImpact: String
+    }
+  },
+  weaknesses: [
+    {
+      description: [
+        {
+          lang: String,
+          value: String
+        }
+      ]
+    }
+  ],
+  configurations: [
+    {
+      nodes: [
+        {
+          cpeMatch: [
+            {
+              vulnerable: Boolean,
+              criteria: String,
+              matchCriteriaId: String
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  references: [String],
+  severity: String,
+  public_date: Date,
+  advisories: [String],
+  bugzilla: String,
+  bugzilla_description: String,
+  cvss3_score: Number,
+  cvss3_scoring_vector: String,
+  cvss_score: Number,
+  cvss_scoring_vector: String,
+  package_state: [
+    {
+      product_name: String,
+      fix_state: String,
+      package_name: String,
+      cpe: String
+    }
+  ],
+  resource_url: String
+});
+
+module.exports = mongoose.model('BackupCVE', backupCveSchema);

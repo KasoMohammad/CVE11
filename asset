@@ -1,0 +1,13 @@
+const mongoose = require('mongoose');
+
+const assetSchema = new mongoose.Schema({
+  text: { type: String, required: true },
+  cves: [{ type: mongoose.Schema.Types.ObjectId, ref: 'CVE' }],
+  createdAt: { type: Date, default: Date.now },
+  name: { type: String },
+  date: { type: Date }
+});
+
+const Asset = mongoose.model('Asset', assetSchema);
+
+module.exports = Asset;
